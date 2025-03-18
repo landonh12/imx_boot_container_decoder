@@ -22,17 +22,17 @@ CONTAINER_HEADER_OFFSETS = {
 }
 
 CONTAINER_HEADER_LENGTHS = {
-    'Version':      0x1,
-    'LengthLSB':    0x1,
+    'Version':      0x1, #B
+    'LengthLSB':    0x1, #H
     'LengthMSB':    0x1,
-    'Tag':          0x1,
-    'Flags':        0x4,
-    'SWVersion':    0x2,
-    'FuseVersion':  0x1,
-    'NumOfImages':  0x1,
-    'SigBlkOffset': 0x2,
-    'Reserved':     0x2,
-    'ImageArray':   0x80
+    'Tag':          0x1, #B
+    'Flags':        0x4, #I
+    'SWVersion':    0x2, #H
+    'FuseVersion':  0x1, #B
+    'NumOfImages':  0x1, #B
+    'SigBlkOffset': 0x2, #H
+    'Reserved':     0x2, #H
+    'ImageArray':   0x80 #
 }
 
 def decode_container_header_flags(flags):
@@ -196,7 +196,7 @@ SRK_HEADER_LENGTHS = {
 def decode_srk_table(record):
     record_list = []
     #print(record.hex())
-    record = record[::-1]
+    #record = record[::-1]
     #print(record.hex())
     record = int.from_bytes(record[::-1])
     
